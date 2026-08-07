@@ -1,6 +1,6 @@
 ---
 name: framing-ml-problems
-description: Frames a data/ML problem before any modeling — the decision, the action, the cost of a wrong call, task type, target, and success metric. Use when picking a project direction, writing a research question, or mapping a problem onto an ML task type.
+description: Frames a data/ML problem before any modeling — the decision, the action, the cost of a wrong call, task type, target, and success metric. Use when picking a project direction, writing a research question, or mapping a problem onto an ML task type...
 ---
 
 # Framing ML problems
@@ -17,7 +17,7 @@ A model is never the goal. A better DECISION is the goal. Frame first, model lat
    decides how careful the method must be, and which errors matter more.
 4. **Why does data or ML help at all?** Sometimes a plain rule (an if-statement) is the right
    answer. Sometimes a dashboard is. ML earns its place only when the pattern is real but too
-   messy to write by hand — many signals, tangled, shifting over time.
+   messy to write by hand - many signals, tangled, shifting over time.
 
 ## Map it to a task type
 
