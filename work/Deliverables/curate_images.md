@@ -1,6 +1,6 @@
 # Kill Your Darlings — Curate Your Images
 
-## Image List (/Users/jared/Documents/GitHub/Week1_RunTheStarterNotebooks/work/Deliverables/assets_screenshots/Subtle Technical Grid Composition.png)
+## Image List (mapped to the content map)
 
 | Page / Use | Image Needed | Source | Status |
 |---|---|---|---|
