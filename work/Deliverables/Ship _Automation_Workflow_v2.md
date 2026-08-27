@@ -8,20 +8,39 @@
 
 ## 1. Step Diagram (The Workflow Flow)
 
-+------------------+     +------------------+     +------------------+     +------------------+     +------------------+
-|  STEP 1: GATHER  |---->| STEP 2: SYNTHESIZE|---->|  STEP 3: DRAFT   |---->|  STEP 4: REVIEW  |---->|  STEP 5: FORMAT  |
-|  (Upload Sources)|     | (Extract Concepts|     | (Write Structured|     | (Critique & Find |     | (Add Summary,    |
-|                  |     |  & Quotes)       |     |  Notes)          |     |   Gaps)          |     |  Quiz, Flashcards)|
-+------------------+     +------------------+     +------------------+     +------------------+     +------------------+
-        |                         |                         |                         |                         |
-        v                         v                         v                         v                         v
-+------------------+     +------------------+     +------------------+     +------------------+     +------------------+
-|   Raw PDFs /     |     |   Concept Grid   |     |   Structured     |     |   Weakness       |     |   Final Study    |
-|   Articles       |     |   (Evidence)     |     |   Document       |     |   Report         |     |   Pack           |
-+------------------+     +------------------+     +------------------+     +------------------+     +------------------+
+> **Note:** The following diagram uses a simple text-based format that renders perfectly in all markdown previewers without requiring monospace fonts or special rendering engines.
 
+### The 5-Step Process with Handoffs
 
-**Handoff Definition:** Each step's output becomes the input for the next step. The Concept Grid feeds the Draft; the Draft feeds the Review; the Review's fixes feed the Final Format.
+1. **STEP 1: GATHER**  
+   → Upload source files (PDFs, articles, or text) into the Claude Project.  
+   **↓ Handoff:** Raw sources are ready for extraction.
+
+2. **STEP 2: SYNTHESIZE**  
+   → Extract core concepts, key evidence, and direct quotes into a structured Concept Grid.  
+   **↓ Handoff:** Concept Grid (organized evidence) is passed to the drafting stage.
+
+3. **STEP 3: DRAFT**  
+   → Write comprehensive study notes: Core Thesis, Key Arguments, Counterarguments, and Glossary.  
+   **↓ Handoff:** Structured Document (raw draft) is passed to the review stage.
+
+4. **STEP 4: REVIEW**  
+   → Critique the draft as a strict professor; identify weak arguments, gaps, and inconsistencies.  
+   **↓ Handoff:** Weakness Report (critique with fixes) is passed to the final stage.
+
+5. **STEP 5: FORMAT**  
+   → Apply the fixes, then append an Executive Summary, 5 MCQ Quiz Questions, and 10 Anki Flashcards.  
+   **↓ Handoff:** Complete Study Pack ready for submission.
+
+---
+
+### Visual Flow 
+
+```text
+GATHER  --->  SYNTHESIZE  --->  DRAFT  --->  REVIEW  --->  FORMAT
+   |              |              |            |             |
+   v              v              v            v             v
+Raw Data   --->  Evidence   --->  Draft  --->  Critique  ->  Final Pack
 
 ---
 
@@ -39,7 +58,7 @@
 
 ### The 5-Step Prompts (Executed sequentially in the same chat thread)
 
-| Step | Prompt (Copy-pasted exactly) |
+| Step | Prompt |
 | :--- | :--- |
 | **1. GATHER** | *"I have uploaded [X] sources for this week's study topic: [Insert Topic Name]. Please confirm you have received all files and list the main titles/authors of each. Do not summarize content yet, just list them."* |
 | **2. SYNTHESIZE** | *"Now, synthesize all the uploaded sources. Extract the absolute core concepts, key supporting evidence, and any direct contradictions between the authors. Organize your output into a 'Concept Grid' with these columns: **Concept** | **Source Mentioned** | **Supporting Quote** | **Page/Paraphrase**."* |
