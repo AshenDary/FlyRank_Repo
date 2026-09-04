@@ -1,0 +1,45 @@
+{
+  "rows_scored": 30000,
+  "clients": 32,
+  "base_declining_rate": 0.5421,
+  "grouped_precision_at_10": 0.5,
+  "grouped_precision_at_50": 0.76,
+  "grouped_precision_at_500": 0.732,
+  "top50_observed_right_picks": 38,
+  "top500_observed_right_picks": 366,
+  "review_minutes_per_page_assumption": 12,
+  "top50_review_hours": 10.0,
+  "top500_review_hours": 100.0,
+  "top50_observed_right_picks_per_hour": 3.8,
+  "top500_observed_right_picks_per_hour": 3.66,
+  "archetype_counts": {
+    "Lower-priority monitor": 18453,
+    "Visible, underperforming CTR": 6333,
+    "Stale but visible": 3027,
+    "Model-risk review candidate": 1644,
+    "High-confidence decline risk, high volume": 272,
+    "High-risk low-volume watchlist": 271
+  },
+  "action_counts": {
+    "MONITOR": 18724,
+    "FIX_TITLE_META_REFRESH": 6333,
+    "REFRESH_CONTENT": 3027,
+    "REVIEW": 1644,
+    "PRIORITY_REVIEW": 272
+  },
+  "reason_code_counts": {
+    "REASON_GENERAL_MODEL_RANK": 18453,
+    "REASON_LOW_CTR_VISIBLE": 6496,
+    "REASON_HIGH_MODEL_RISK": 5991,
+    "REASON_PAGE_ONE_DECAY_RISK": 3739,
+    "REASON_STALE_VISIBLE": 2228,
+    "REASON_HIGH_RISK_LOW_VOLUME": 449,
+    "REASON_HIGH_CONFIDENCE_HIGH_VOLUME": 272
+  },
+  "ranking_source": "grouped_probability from GroupKFold(client_id) out-of-fold scoring",
+  "queue_path": "work/outputs/w07_grouped_action_queue.csv",
+  "figure_paths": [
+    "work/figures/w07_action_mix.png",
+    "work/figures/w07_reason_code_frequency.png"
+  ]
+}
