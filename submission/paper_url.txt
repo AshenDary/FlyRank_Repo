@@ -1,4 +1,4 @@
-PASTE-YOUR-DEPLOYED-PAPER-URL-HERE
+https://ashendary.github.io/FlyRank_Repo/
 
 
 ---

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Which pages should an editor review first?</title>
+  <meta name="description" content="A measured warehouse-scale study of refresh-opportunity ranking for content review.">
+  <style>
+    :root { --ink:#162b2a; --muted:#61706c; --paper:#f7f5ef; --cream:#fffdf8; --teal:#0d6b68; --coral:#ef735b; --gold:#e5b84d; --line:#d9dfd6; --shadow:0 18px 50px rgba(22,43,42,.09); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:Georgia, 'Times New Roman', serif; line-height:1.65; }
+    a { color:var(--teal); }
+    .shell { width:min(1120px, calc(100% - 40px)); margin:auto; }
+    .masthead { padding:34px 0 22px; border-bottom:1px solid var(--line); }
+    .kicker { color:var(--coral); font:700 .78rem/1.2 'Avenir Next', sans-serif; letter-spacing:.12em; text-transform:uppercase; }
+    nav { display:flex; justify-content:space-between; gap:20px; align-items:center; font:600 .82rem 'Avenir Next', sans-serif; }
+    nav a { text-decoration:none; color:var(--ink); }
+    .navlinks { display:flex; flex-wrap:wrap; gap:18px; }
+    .hero { padding:76px 0 72px; display:grid; grid-template-columns:1.2fr .8fr; gap:60px; align-items:end; }
+    h1,h2,h3 { font-weight:400; line-height:1.08; margin:0 0 20px; }
+    h1 { font-size:clamp(3.2rem, 7vw, 6.8rem); letter-spacing:-.03em; max-width:900px; }
+    h2 { font-size:clamp(2rem, 4vw, 3.6rem); padding-top:8px; }
+    h3 { font-size:1.35rem; }
+    .dek { font-size:1.25rem; color:var(--muted); max-width:620px; }
+    .hero-note { border-left:4px solid var(--gold); padding:10px 0 10px 24px; font-size:1.05rem; }
+    main { background:var(--cream); }
+    section { padding:76px 0; border-bottom:1px solid var(--line); }
+    .section-head { display:grid; grid-template-columns:180px 1fr; gap:36px; margin-bottom:32px; }
+    .section-number { color:var(--coral); font:700 .8rem 'Avenir Next', sans-serif; letter-spacing:.12em; text-transform:uppercase; padding-top:8px; }
+    .section-copy { max-width:790px; }
+    .abstract { background:var(--ink); color:#f7f5ef; padding:34px; border-radius:2px; box-shadow:var(--shadow); }
+    .abstract p { margin:0 0 15px; font-size:1.12rem; }
+    .abstract p:last-child { margin-bottom:0; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .stat { border-top:3px solid var(--teal); padding:18px 0; }
+    .stat strong { display:block; font:700 2.4rem/1 'Avenir Next', sans-serif; color:var(--teal); }
+    .stat span { color:var(--muted); font-size:.95rem; }
+    .callout { background:#edf2e9; padding:25px 28px; margin:26px 0; border-left:4px solid var(--teal); }
+    ul { padding-left:22px; }
+    li { margin:8px 0; }
+    .table-wrap { overflow-x:auto; border:1px solid var(--line); }
+    table { width:100%; border-collapse:collapse; min-width:700px; background:#fff; }
+    th,td { padding:13px 15px; border-bottom:1px solid var(--line); text-align:right; white-space:nowrap; }
+    th:first-child, td:first-child { text-align:left; }
+    th { font:700 .78rem 'Avenir Next', sans-serif; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); background:#f1f3ed; }
+    .model { color:var(--coral); font-weight:700; }
+    .baseline { color:var(--teal); font-weight:700; }
+    .chart-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:30px; }
+    figure { margin:0; background:#fff; border:1px solid var(--line); padding:15px; }
+    figure img { display:block; width:100%; height:auto; }
+    figcaption { padding:13px 4px 2px; color:var(--muted); font-size:.92rem; }
+    .rank { display:grid; grid-template-columns:54px 1fr; gap:18px; margin:20px 0; }
+    .rank-num { color:var(--coral); font:700 2rem/1 'Avenir Next', sans-serif; }
+    .rank p { margin:0; }
+    code { font-family:'SFMono-Regular', Consolas, monospace; font-size:.88em; background:#edf2e9; padding:2px 5px; }
+    .links { columns:2; column-gap:40px; }
+    .links li { break-inside:avoid; }
+    footer { padding:52px 0 72px; background:var(--ink); color:#f7f5ef; }
+    footer a { color:#ffd27a; }
+    .small { color:var(--muted); font-size:.92rem; }
+    @media (max-width:760px) { .shell{width:min(100% - 28px,1120px)} .hero{display:block;padding:50px 0} .hero-note{margin-top:34px} .section-head{display:block} .section-number{margin-bottom:14px} .grid,.chart-grid{grid-template-columns:1fr} .links{columns:1} h1{font-size:3.5rem} section{padding:54px 0} nav{align-items:flex-start; flex-direction:column} }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="shell">
+      <nav><a href="#top">WEEK 8 / RESEARCH PAPER</a><div class="navlinks"><a href="#results">Results</a><a href="#recommendations">Recommendations</a><a href="#reproducibility">Reproduce</a></div></nav>
+    </div>
+  </header>
+  <main id="top">
+    <div class="shell">
+      <section class="hero">
+        <div><div class="kicker">Lane 2 · Content opportunity scoring</div><h1>Which pages should an editor review first?</h1><p class="dek">A warehouse-scale study of ranked review queues for possible content refresh, built as decision support rather than an automatic editing system.</p></div>
+        <div class="hero-note"><strong>The short answer</strong><br>The small tree is useful at the narrowest March cutoff, while the transparent rule is the better wider-batch default. June repeats that shape at larger queue sizes.</div>
+      </section>
+
+      <section id="abstract"><div class="section-head"><div class="section-number">01 / Abstract</div><div class="section-copy"><div class="abstract"><p>This paper asks which content pages an editor should review first when review time is limited.</p><p>Using March 2026 FlyRank warehouse data, I built a seven-feature depth-4 decision tree and compared it with a transparent CTR, visibility, volume, and freshness rule.</p><p>On March, the model measured 0.90 Precision@10 versus 0.80 for the baseline, while the baseline led at Precision@50 and Precision@500, and on June the model tied at Precision@10 while the baseline led at both wider cutoffs.</p><p>The labels are observational decline proxies, the March-to-June base rate shifted from 43.29% to 64.80%, and ROC-AUC stayed near chance even where top-queue precision was useful.</p><p>The practical recommendation is to use the model for a narrow first look and the transparent baseline for larger review batches, with a human checking every action.</p></div></div></div></section>
+
+      <section id="introduction"><div class="section-head"><div class="section-number">02 / Introduction</div><div class="section-copy"><h2>A queue, not a verdict</h2><p>The decision is simple to state: when an editor has a limited review budget, which pages deserve attention first? A useful queue can surface pages with visible search demand, weak click-through relative to a broad position expectation, or signs of staleness so a reviewer can inspect whether the right action is a title or metadata fix, a content refresh, monitoring, or no action.</p><p>Both kinds of error matter. A false positive spends scarce review time on a page that did not need attention; a false negative leaves a genuinely declining page buried in the backlog. The output therefore ranks evidence for a person rather than making a publishing decision.</p></div></div></section>
+
+      <section id="data"><div class="section-head"><div class="section-number">03 / Data</div><div class="section-copy"><h2>From a daily warehouse to page-level decisions</h2><p>Development used the March 2026 partition of <code>fact_content_daily_performance</code> from the FlyRank warehouse. Daily rows were aggregated to 120,513 client×content pages around a March 15 decision date, with 41 observed clients drawn from the 104-client dimension.</p><p>The final evaluation used the June 2026 sealed partition once, producing 139,347 page rows across 50 observed clients. The extracts were made with DuckDB from Hugging Face and remain local only: <code>data/warehouse_extract/</code> is gitignored because the dataset terms prohibit redistributing raw data.</p><div class="grid"><div class="stat"><strong>120,513</strong><span>March development pages</span></div><div class="stat"><strong>139,347</strong><span>June sealed-test pages</span></div><div class="stat"><strong>43.29% → 64.80%</strong><span>March to June label rate</span></div></div><div class="callout"><strong>Open question.</strong> The declining-label rate shifts substantially between March and June. This paper reports the shift and does not explain it; investigating the cause was outside the available time.</div></div></div></section>
+
+      <section id="methodology"><div class="section-head"><div class="section-number">04 / Methodology</div><div class="section-copy"><h2>Seven signals, one readable tree</h2><p>The warehouse label is <code>is_declining_label = 1</code> when March 1–15 impressions are at least 10 and March 16–31 impressions are lower. The derived compatibility field <code>trend_direction</code> exists for display and label construction only; it never enters the fitted feature matrix.</p><ul><li><code>ctr</code></li><li><code>avg_position</code></li><li><code>visible_valid_position</code></li><li><code>ctr_gap_score</code></li><li><code>log_impressions_90d</code></li><li><code>days_since_last_update</code></li><li><code>freshness_score</code></li></ul><p>The model is a <code>DecisionTreeClassifier</code> with max depth 4, minimum leaf size 100, class balancing, and seed 42. Scores are out-of-fold under 5-fold <code>GroupKFold(client_id)</code>. The baseline ranks visible pages using <code>avg_position</code>, <code>ctr</code>, <code>impressions_90d</code>, and <code>days_since_last_update</code>, with fixed weights for CTR gap, volume, and freshness.</p><p>Leakage checks excluded the label, the compatibility trend fields, trend-window columns, and both IDs. The validation audit also compared grouped and naive shuffled folds; the grouped design is the reported model result.</p></div></div></section>
+
+      <section id="results"><div class="section-head"><div class="section-number">05 / Results</div><div class="section-copy"><h2>The narrow queue favors the tree; the wide queue favors the rule</h2><p>These are observed ranking metrics, not recovery guarantees. The result is deliberately mixed: the model leads at the March top-10 cutoff, ties the baseline at the June top-10 cutoff, and the baseline leads at Precision@50 and Precision@500 on both months.</p><div class="table-wrap"><table><thead><tr><th>Split / method</th><th>P@10</th><th>P@50</th><th>P@500</th><th>ROC-AUC</th><th>Avg. precision</th></tr></thead><tbody><tr><td>March baseline</td><td class="baseline">0.800</td><td class="baseline">0.760</td><td class="baseline">0.618</td><td>0.5082</td><td>0.4643</td></tr><tr><td>March model</td><td class="model">0.900</td><td class="model">0.520</td><td class="model">0.472</td><td class="model">0.5637</td><td class="model">0.4764</td></tr><tr><td>June baseline</td><td class="baseline">1.000</td><td class="baseline">0.880</td><td class="baseline">0.884</td><td>0.5582</td><td>0.6927</td></tr><tr><td>June model</td><td class="model">1.000</td><td class="model">0.820</td><td class="model">0.784</td><td class="model">0.5447</td><td class="model">0.6831</td></tr></tbody></table></div><p class="small">March Precision@K and action counts: <a href="https://github.com/AshenDary/FlyRank_Repo/blob/main/work/outputs/baseline_action_score_metrics.json">baseline receipt</a> and <a href="https://github.com/AshenDary/FlyRank_Repo/blob/main/work/outputs/w07_action_playbook_metrics.json">playbook receipt</a>. March ROC-AUC and average precision are from the executed Week 5 comparison output; the March playbook receipt currently omits those two fields. June values are from the two sealed-month receipts.</p><div class="chart-grid"><figure><img src="assets/w07_action_mix.png" alt="Bar chart showing the action mix of the March ranked queue"><figcaption><strong>Figure 1.</strong> The operational queue is mostly monitor or visible underperforming-CTR candidates. Counts are from the March playbook receipt.</figcaption></figure><figure><img src="assets/w07_reason_code_frequency.png" alt="Bar chart showing reason-code frequency in the March ranked queue"><figcaption><strong>Figure 2.</strong> Reason codes keep the ranked output inspectable instead of turning it into an opaque verdict.</figcaption></figure></div></div></div></section>
+
+      <section id="limitations"><div class="section-head"><div class="section-number">06 / Limitations</div><div class="section-copy"><h2>What the numbers cannot say</h2><ul><li>This is observational decision support. It cannot show that refreshing a page causes traffic recovery; refreshed older pages may already have looked stronger before selection.</li><li>ROC-AUC is close to chance in the March and June model results, even when top-queue precision is strong. Precision@K examines a small operational slice at the head of the ranked list, while ROC-AUC summarizes pairwise ordering across the full population, so the two can diverge.</li><li>The March label rate is 43.29% and June is 64.80%; the shift is real in the receipts but unexplained here.</li><li>June is one held-out evaluation, not repeated validation. It is useful as a sealed check, not a distribution-wide guarantee.</li><li>The 41 observed March clients and 50 observed June clients do not represent every possible client mix. Revalidation is required before broader use.</li></ul></div></div></section>
+
+      <section id="recommendations"><div class="section-head"><div class="section-number">07 / Recommendations</div><div class="section-copy"><h2>Use the right tool for the queue width</h2><div class="rank"><div class="rank-num">01</div><p><strong>Use the model for the first 10 pages.</strong> It measured 0.90 P@10 in March and tied the baseline at 1.00 in June. A reviewer should still verify the page, context, seasonality, and sample size.</p></div><div class="rank"><div class="rank-num">02</div><p><strong>Use the transparent baseline for wider batches.</strong> It led at P@50 and P@500 on both March and June, and its inputs are easy to explain and audit.</p></div><div class="rank"><div class="rank-num">03</div><p><strong>Keep the action layer human-facing.</strong> The March queue contains 22,884 visible underperforming-CTR candidates, 703 high-confidence high-volume candidates, 320 model-risk review candidates, 187 stale-but-visible candidates, and 96,419 lower-priority monitors.</p></div><div class="rank"><div class="rank-num">04</div><p><strong>Do not auto-edit.</strong> Treat <code>PRIORITY_REVIEW</code>, <code>FIX_TITLE_META_REFRESH</code>, <code>REFRESH_CONTENT</code>, <code>REVIEW</code>, and <code>MONITOR</code> as review labels, not automatic actions.</p></div></div></div></div></section>
+
+      <section id="reproducibility"><div class="section-head"><div class="section-number">08 / Reproducibility</div><div class="section-copy"><h2>Everything needed is inspectable</h2><p>The analysis is built to be rerun from the repository, but not from committed raw data. The warehouse extracts and generated CSV queues are gitignored and must be regenerated with a personal <code>HF_TOKEN</code>.</p><ul class="links"><li><a href="https://github.com/AshenDary/FlyRank_Repo/blob/main/work/notebooks/w03_data_contract.ipynb">ML-04 data contract</a></li><li><a href="https://github.com/AshenDary/FlyRank_Repo/blob/main/work/notebooks/w04_baseline_score.ipynb">ML-07 baseline</a></li><li><a href="https://github.com/AshenDary/FlyRank_Repo/blob/main/work/notebooks/w05_model.ipynb">ML-08 model</a></li><li><a href="https://github.com/AshenDary/FlyRank_Repo/blob/main/work/notebooks/w06_validation_audit.ipynb">ML-09 validation audit</a></li><li><a href="https://github.com/AshenDary/FlyRank_Repo/blob/main/work/notebooks/w07_action_playbook.ipynb">ML-10 action playbook</a></li><li><a href="https://github.com/AshenDary/FlyRank_Repo/blob/main/scripts/06_migrate_warehouse.py">Warehouse migration</a></li><li><a href="https://github.com/AshenDary/FlyRank_Repo/blob/main/scripts/07_final_heldout_evaluation.py">Sealed model evaluation</a></li><li><a href="https://github.com/AshenDary/FlyRank_Repo/blob/main/scripts/08_final_baseline_heldout_evaluation.py">Sealed baseline evaluation</a></li><li><a href="https://github.com/AshenDary/FlyRank_Repo">Repository</a></li></ul><p class="small">Seeds: 42. Model: depth-4 decision tree. Validation: 5-fold client-grouped out-of-fold scoring. June remains sealed except for the final evaluation receipts.</p></div></div></section>
+
+      <section id="acknowledgments"><div class="section-head"><div class="section-number">09 / Acknowledgments</div><div class="section-copy"><h2>Credit where it belongs</h2><p><a href="https://flyrank.ai">Built on the FlyRank ML Internship dataset</a></p></div></div></section>
+    </div>
+  </main>
+  <footer><div class="shell"><p><strong>Measured ranking for human review.</strong> Public-safe artifacts only; no client names, raw identifiers, private queries, or credentials are included.</p><p class="small">Paper assembled from the Week 8 capstone workflow · September 2026</p></div></footer>
+</body>
+</html>

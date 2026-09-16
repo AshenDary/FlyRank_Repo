@@ -1,0 +1,14 @@
+{
+  "training_month": "2026-03",
+  "sealed_test_month": "2026-06",
+  "training_rows": 120513,
+  "training_clients": 41,
+  "test_rows": 139347,
+  "test_clients": 50,
+  "test_base_declining_rate": 0.648,
+  "heldout_precision_at_10": 1.0,
+  "heldout_precision_at_50": 0.82,
+  "heldout_precision_at_500": 0.784,
+  "heldout_roc_auc": 0.5447,
+  "heldout_average_precision": 0.6831
+}

@@ -1,0 +1,18 @@
+{
+  "sealed_test_month": "2026-06",
+  "rows_scored": 139347,
+  "clients": 50,
+  "base_declining_rate": 0.648,
+  "baseline_precision_at_10": 1.0,
+  "baseline_precision_at_50": 0.88,
+  "baseline_precision_at_500": 0.884,
+  "baseline_roc_auc": 0.5582,
+  "baseline_average_precision": 0.6927,
+  "baseline_rule_inputs": [
+    "avg_position",
+    "ctr",
+    "impressions_90d",
+    "days_since_last_update"
+  ],
+  "tuning_performed": false
+}
