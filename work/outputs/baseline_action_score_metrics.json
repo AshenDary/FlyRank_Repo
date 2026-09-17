@@ -4,6 +4,7 @@
   "base_declining_rate": 0.4329,
   "precision_at_10": 0.8,
   "precision_at_50": 0.76,
+  "precision_at_500": 0.618,
   "score_inputs": [
     "avg_position",
     "ctr",
